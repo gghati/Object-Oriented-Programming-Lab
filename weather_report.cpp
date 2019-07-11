@@ -1,19 +1,15 @@
-/* Weather Report
- * Roll No. : 23223
- * Batch : F10
- * Date :
-
-
-  * Problem Defination :
-	 Create a class named WeatherReport that holds a dialy weather report with data members day_of_month, highTemp,
-	 lowTemp, amountRain, amountSnowfall. Use different types of constructors to initialize the object. Also include
-	 a function that prompts the user and sets values for each field so that you can overide the default values.
-	 Write a menu driven program in c++ with option to enter data and generate monthly report that displays average
-	 of each attribute (The constructor initialize the fields with default values : 99 for day_of_month, 999 for highTemp
-   -999 for lowTemp, and 0 for amountRain and amountSnowfall)
- */
+/*
+==================================================================================
+Assignment : Weather Report
+Name : Gaurav Ghati
+class : SE 10
+Batch : F 10
+Problem Statement : Create a class named WeatherReport that holds a dialy weather report with data members day_of_month, highTemp, lowTemp, amountRain, amountSnowfall. Use different types of constructors to initialize the object. Also include a function that prompts the user and sets values for each field so that you can overide the default values. Write a menu driven program in c++ with option to enter data and generate monthly report that displays average of each attribute (The constructor initialize the fields with default values : 99 for day_of_month, 999 for highTemp, -999 for lowTemp, and 0 for amountRain and amountSnowfall)
+==================================================================================
+*/
 
 #include<iostream>
+#include <iomanip>
 using namespace std;
 
 class WeatherReport {
@@ -46,7 +42,6 @@ class WeatherReport {
 				amountSnowfall = as;
 		 }
 		 void update();
-		 void printRow(int);
 		 void displayArr(WeatherReport[]);
 };
 
@@ -63,10 +58,6 @@ void WeatherReport :: update(){
 	cin>>amountSnowfall;
 }
 
-void WeatherReport :: printRow(int i){
-	cout<<(i+1)<<"\t\t"<<dayOfMonth<<"\t\t"<<highTemp<<"\t\t"<<lowTemp<<"\t\t"<<amountRain<<"\t\t"<<amountSnowfall<<"\n";
-}
-
 void printMenu(){
 	cout<<"1. Update values "<<"\n";
 	cout<<"2. Exit"<<"\n";
@@ -75,26 +66,28 @@ void printMenu(){
 void WeatherReport :: displayArr(WeatherReport mon[20]){
 	 int sum[4] = {0,0,0,0};
 	 float avg[4] = {0.0 , 0.0 , 0.0, 0.0};
-	 cout<<"S.No. \t dayOfMonth \t highTemp \t lowTemp \t amountRain \t amountSnowfall\n";
-	 cout<<"---------------------------------------------------------------------------------------------------\n";
-	 for(int i=0; i<20; i++){
-		  mon[i].printRow(i);
+	 cout<<setw(60)<<"Monthly Report \n";
+	 cout<<"---------------------------------------------------------------------------------------------------------------\n";
+	 cout<<setw(7)<<"S.No. "<<setw(20)<<" dayOfMonth "<<setw(20)<<" highTemp "<<setw(20)<<" lowTemp "<<setw(20)<<" amountRain "<<setw(20)<<" amountSnowfall\n";
+	 cout<<"---------------------------------------------------------------------------------------------------------------\n";
+	 for(int i=0; i<30; i++){
+		  cout<<setw(3)<<(i+1)<<setw(20)<<mon[i].dayOfMonth<<setw(20)<<mon[i].highTemp<<setw(20)<<mon[i].lowTemp<<setw(20)<<mon[i].amountRain<<setw(20)<<mon[i].amountSnowfall<<"\n";
 			sum[0] += mon[i].highTemp;
 			sum[1] += mon[i].lowTemp;
 			sum[2] += mon[i].amountRain;
 			sum[3] += mon[i].amountSnowfall;
 	 }
-	 cout<<"----------------------------------------------------------------------------------------------------\n";
+	 cout<<"----------------------------------------------------------------------------------------------------------------\n";
 	 for(int i=0; i<4; i++){
-		 avg[i] = (float)sum[i]/20;
+		 avg[i] = (float)sum[i]/30;
 	 }
-	 cout<<"Average      \t\t\t"<<avg[0]<<"\t\t"<<avg[1]<<"\t\t"<<avg[2]<<"\t\t"<<avg[3]<<"\n";
-	 cout<<"----------------------------------------------------------------------------------------------------\n";
+	 cout<<setw(7)<<"Average"<<setw(36)<<avg[0]<<setw(20)<<avg[1]<<setw(20)<<avg[2]<<setw(20)<<avg[3]<<"\n";
+	 cout<<"----------------------------------------------------------------------------------------------------------------\n";
 }
 
 int main(){
 
-	 WeatherReport month[20];
+	 WeatherReport month[30];
 	 int number, day;
 	 month[0].displayArr(month);
 	 int entry = 1;
