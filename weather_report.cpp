@@ -12,6 +12,8 @@ Problem Statement : Create a class named WeatherReport that holds a dialy weathe
 #include <iomanip>
 using namespace std;
 
+int i=0;
+
 class WeatherReport {
 	 int dayOfMonth;
 	 int highTemp;
@@ -20,6 +22,10 @@ class WeatherReport {
 	 int amountSnowfall;
 
    public:
+
+		 static double sum[4];
+		 int n = 0;
+
 		 WeatherReport(){
 			 dayOfMonth = 99;
 			 highTemp = 999;
@@ -42,8 +48,16 @@ class WeatherReport {
 				amountSnowfall = as;
 		 }
 		 void update();
-		 void displayArr(WeatherReport[]);
+		 void report();
+		 void displayRow(int);
+		 static void avg();
 };
+
+double WeatherReport :: sum[4];
+
+void WeatherReport :: displayRow(int i){
+	cout<<setw(3)<<i+1<<setw(20)<<dayOfMonth<<setw(20)<<highTemp<<setw(20)<<lowTemp<<setw(20)<<amountRain<<setw(20)<<amountSnowfall<<"\n";
+}
 
 void WeatherReport :: update(){
 	cout<<"Enter Day of Month : ";
@@ -58,50 +72,55 @@ void WeatherReport :: update(){
 	cin>>amountSnowfall;
 }
 
+void WeatherReport :: report(){
+	sum[0] += highTemp;
+	sum[1] += lowTemp;
+	sum[2] += amountRain;
+	sum[3] += amountSnowfall;
+}
+
+void WeatherReport :: avg(){
+	for(i=0;i<5;i++){
+		sum[i] = sum[i]/30;
+	}
+	cout<<setw(7)<<"Average"<<setw(36)<<sum[0]<<setw(20)<<sum[1]<<setw(20)<<sum[2]<<setw(20)<<sum[3]<<"\n";
+	cout<<"----------------------------------------------------------------------------------------------------------------\n";
+}
+
 void printMenu(){
 	cout<<"1. Update values "<<"\n";
 	cout<<"2. Exit"<<"\n";
 }
 
-void WeatherReport :: displayArr(WeatherReport mon[20]){
-	 int sum[4] = {0,0,0,0};
-	 float avg[4] = {0.0 , 0.0 , 0.0, 0.0};
+void displayReport(WeatherReport mon[30]){
 	 cout<<setw(60)<<"Monthly Report \n";
 	 cout<<"---------------------------------------------------------------------------------------------------------------\n";
 	 cout<<setw(7)<<"S.No. "<<setw(20)<<" dayOfMonth "<<setw(20)<<" highTemp "<<setw(20)<<" lowTemp "<<setw(20)<<" amountRain "<<setw(20)<<" amountSnowfall\n";
 	 cout<<"---------------------------------------------------------------------------------------------------------------\n";
 	 for(int i=0; i<30; i++){
-		  cout<<setw(3)<<(i+1)<<setw(20)<<mon[i].dayOfMonth<<setw(20)<<mon[i].highTemp<<setw(20)<<mon[i].lowTemp<<setw(20)<<mon[i].amountRain<<setw(20)<<mon[i].amountSnowfall<<"\n";
-			sum[0] += mon[i].highTemp;
-			sum[1] += mon[i].lowTemp;
-			sum[2] += mon[i].amountRain;
-			sum[3] += mon[i].amountSnowfall;
+		  mon[i].displayRow(i);
+			mon[i].report();
 	 }
 	 cout<<"----------------------------------------------------------------------------------------------------------------\n";
-	 for(int i=0; i<4; i++){
-		 avg[i] = (float)sum[i]/30;
-	 }
-	 cout<<setw(7)<<"Average"<<setw(36)<<avg[0]<<setw(20)<<avg[1]<<setw(20)<<avg[2]<<setw(20)<<avg[3]<<"\n";
-	 cout<<"----------------------------------------------------------------------------------------------------------------\n";
-}
+	 mon[29].avg();
+ }
 
 int main(){
 
 	 WeatherReport month[30];
-	 int number, day;
-	 month[0].displayArr(month);
+	 int choice, day;
+	 displayReport(month);
 	 int entry = 1;
-
 
 	 while(entry==1){
 		 printMenu();
 		 cout<<"Enter Choice : "<<"\n";
-		 cin>>number;
-		 switch(number){
+		 cin>>choice;
+		 switch(choice){
 		   case 1 : cout<<"Enter updating day : \n";
 			          cin>>day;
 								month[day-1].update();
-								month[day-1].displayArr(month);
+								displayReport(month);
 								break;
 
 			 case 2: entry = 0;
