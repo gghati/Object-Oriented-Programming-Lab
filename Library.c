@@ -49,13 +49,73 @@ void Book::add(){
 }
 
 
-int search(){  
+int Book :: search(){  
   int subChoice;
   cout<<"1. Search by book name \n";
   cout<<"2. Search by author of book\n";
   cout<<"3. Search by Book Number\n";
   cin>>subChoice;
   switch(subChoice){
+    
+    case 1:  char *name;
+             cin>>name;
+             if(title==name){
+                cout<<"Book found with Title Name:"<<title<<"\n";
+                cout<<"Title: "<<title<<"\n";
+                cout<<"Author: "<<author<<"\n";                
+                cout<<"Publisher: "<<publisher<<"\n";
+                cout<<"Prize: "<<prize<<"\n";
+                cout<<"Available stock: "<<ava_stoke<<"\n"
+                cout<<"Book Number: "<<bookNo<<"\n";
+                return 1;
+             }
+             return 0;
+             
+    case 2:  char *auName;
+             cin>>auName;
+             if(author==auName){
+                cout<<"Book found with Author Name:"<<title<<"\n";
+                cout<<"Title: "<<title<<"\n";
+                cout<<"Author: "<<author<<"\n";                
+                cout<<"Publisher: "<<publisher<<"\n";
+                cout<<"Prize: "<<prize<<"\n";
+                cout<<"Available stock: "<<ava_stoke<<"\n"
+                cout<<"Book Number: "<<bookNo<<"\n";
+                return 2;
+             }
+             return 0;
+              
+    case 3:  int BookID;
+             cin>>BookID;
+             if(bookNo==BookID){
+                cout<<"Book found with Book ID:"<<BookID<<"\n";
+                cout<<"Title: "<<title<<"\n";
+                cout<<"Author: "<<author<<"\n";                
+                cout<<"Publisher: "<<publisher<<"\n";
+                cout<<"Prize: "<<prize<<"\n";
+                cout<<"Available stock: "<<ava_stoke<<"\n"
+                cout<<"Book Number: "<<bookNo<<"\n";
+                return 3;
+             }
+             return 0;
+  }
+}
+
+void Book :: purchase(){
+  
+}
+
+
+void Book :: diaplayRow(){
+  
+}
+
+void Book :: update(){
+  
+  int subchoice()
+  switch(subChoice){
+  
+    case 0: cout<<"BOOK NOT FOUND\n"
     
     case 1:  char *name;
              cin>>name;
@@ -70,6 +130,7 @@ int search(){
                 cin>>ava_stoke;
                 cout<<"Update book Number fo the Book :\n";
                 cin>>bookNo;
+                return 1;
              }
              break;
              
@@ -86,6 +147,7 @@ int search(){
                 cin>>ava_stoke;
                 cout<<"Update book Number fo the Book :\n";
                 cin>>bookNo;
+                return 1;
              }
              break;
               
@@ -102,28 +164,11 @@ int search(){
                 cin>>ava_stoke;
                 cout<<"Update book Number fo the Book :\n";
                 cin>>bookNo;
+                return 1;
              }
-             break;   
-             
-     default: cout<<"Enter valid choice\n";
-              break;                       
-  }
-}
-
-void purchase(){
-  
-}
-
-
-void Book :: diaplayRow(){
-  
-}
-
-void Book :: update(){
-  cout<<"For Updating:";
-  search();
-  
-  
+             break;           
+                       
+   }            
 }
 
 void diaplayColl(){
@@ -149,16 +194,12 @@ int main(){
    int exit = 0;
 
    do{
-     
-     int noBook = 0;
      displayMenu();
      cout<<"Enter Choice:\n";
      cin>>num;
    
      switch(num){
-       case 1: add();
-               noBook++;
-               break;
+       case 1: add(); noBook++; break;
               
        case 2: update(); break;
       
