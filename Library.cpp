@@ -1,5 +1,24 @@
+/*
+==================================================================================
+Assignment : DYNAMIC MEMORY ALLOCATION USING NEW AND DELETE OPERATOR
+Name : Gaurav Ghati
+class : SE 10
+Batch : F 10
+Problem Statement : A Book shop maintains the inventory of books that are being sold at the shop. The list includes details such as title, author, publisher, price and available stock. Write a program in C++ which will have a class called books with suitable member 
+i)   Add  
+ii)  Update 
+iii) Search a book 
+iv)  Purchase a book 
+     (update the stock and display the total cost)
+v)   Record number of successful/unsuccessful transactions
+     (use static data members to keep count of transactions)
+==================================================================================
+*/
+
 #include<iostream>
 #include<iomanip>
+
+#define MAX 30
 
 class Book{
   char *title;
@@ -20,20 +39,85 @@ class Book{
     bookNo = new int;
   }
 
-  void add();
-  void purchase();
-  void search();
-  void update();
-  void display(); 
+  void addBook();
+  void purchaseBook();
+  void updateBook();
+  void displayBook();
 
   ~Book(){
     delete title;
     delete author;
     delete publisher;  
   }
+  
+  friend class Library;
 };
 
-void Book::add(){
+
+class Library{
+   
+   Book books[MAX];
+
+   public:
+   void search(Book books[MAX], int n);
+   void displayArr(Book books[MAX], int n);
+   void getBook(int index);
+} 
+
+
+void Library :: displayArr(Book books[MAX], int n){
+  cout<<"\n---------------------------------------------------------------------------------------------------------------------------";
+  cout<<"\nTitle"<<setw(10)<<"Author"<<setw(10)<<"Publisher"<<setw(10)<<"Avaiable stock"<<setw(10)<<"Prize"<<setw(10)<<"BookNo";
+  cout<<"---------------------------------------------------------------------------------------------------------------------------";
+  for(i=0; i<n; i++)   cout<<books[i].title<<setw(10)<<books[i].author<<setw(10)<<books[i].publisher<<setw(10)<<books[i].ava_stock<<setw(10)<<books[i].prize<<setw(10)<<books [i].bookNo<<"\n";
+  cout<<"\n---------------------------------------------------------------------------------------------------------------------------";
+}
+
+int Library :: search(Book books[MAX], int n){  
+  int subChoice, found;
+  cout<<"\n1. Search by book name";
+  cout<<"\n2. Search by author of book";
+  cout<<"\n3. Search by Book Number";
+  cin>>subChoice;
+  for(i=0;i<n;i++){
+     switch(subChoice){
+        case 1:  char *name;
+              cout<<"Enter Book Title: ";
+              cin>>name;
+              if(book[i].title==name){
+                cout<<"Book Found!";
+                books[i].displayBook();
+                return i;
+              }
+              break;
+             
+        case 2:  char *auName;
+               cin>>auName;
+               if(book[i].author==auName){
+                  cout<<"Book Found!";
+                  books[i].displayBook(); 
+                  return i;
+               }
+               break;
+              
+       case 3:  int BookID;
+               cin>>BookID;
+               if(book[i].bookNo==BookID){
+                  cout<<"Book Found!";
+                  books[i].displayBook();
+                  return i;
+               }
+               break;
+     }
+  }
+  if(found==0){
+    cout<<"Book Not Found!";
+  }
+}
+
+static int Book :: ava_stoke = 0;
+
+void Book::addBook(){                              //DONE
   cout<<"\nEnter Title of the Book:";
   cin>>title;
   cout<<"\nEnter Author of the Book:";
@@ -48,146 +132,18 @@ void Book::add(){
   cin>>bookNo;
 }
 
-int Book :: search(){  
-  int subChoice;
-  cout<<"\n1. Search by book name";
-  cout<<"\n2. Search by author of book";
-  cout<<"\n3. Search by Book Number";
-  cin>>subChoice;
-  switch(subChoice){
-    case 1:  char *name;
-             cin>>name;
-             if(title==name){
-                cout<<"\nBook found with Title Name:"<<title;
-                cout<<"\nAuthor: "<<author;                
-                cout<<"\nPublisher: "<<publisher;
-                cout<<"\nPrize: "<<prize;
-                cout<<"\nAvailable stock: "<<ava_stoke;
-                cout<<"\nBook Number: "<<bookNo;
-                return 1;
-             }
-             break;
-             
-    case 2:  char *auName;
-             cin>>auName;
-             if(author==auName){
-                cout<<"\nBook found with Author Name:"<<title;
-                cout<<"\nTitle: "<<title;               
-                cout<<"\nPublisher: "<<publisher;
-                cout<<"\nPrize: "<<prize;
-                cout<<"\nAvailable stock: "<<ava_stoke;
-                cout<<"\nBook Number: "<<bookNo;
-                return 2;
-             }
-             break;
-              
-    case 3:  int BookID;
-             cin>>BookID;
-             if(bookNo==BookID){
-                cout<<"\nBook found with Book ID:"<<BookID;
-                cout<<"\nTitle:"<<title;
-                cout<<"\nAuthor:"<<author;                
-                cout<<"\nPublisher: "<<publisher<<;
-                cout<<"\nPrize: "<<prize;
-                cout<<"\nAvailable stock: "<<ava_stoke;
-                return 3;
-             }
-             break;
-  }
-  return 0;
-}
-
-void Book :: purchase(){
+void Book :: purchaseBook(){
   int quan = 0;
   cout<<"Enter Number of books you want to purchase"
   
 }
 
-void Book :: diaplayRow(){
+void Book :: diaplayBook(){
   cout<<title<<setw(10)<<author<<setw(10)<<publisher<<setw(10)<<ava_stock<<setw(10)<<prize<<setw(10)<<bookNo<<"\n";
 }
 
-void Book :: update(){
-  
-  int subchoice = search();
-  switch(subChoice){
-    
-    case 1:  char *name;
-             cin>>name;
-             if(title==name){
-                cout<<"\nBOOK FOUND WITH THIS TITLE"
-                cout<<"\nUpdate Author of the Book :";
-                cin>>author;
-                cout<<"\nUpdate publisher of the Book :";
-                cin>>pulisher;
-                cout<<"\nUpdate Prize of the Book :";
-                cin>>prize;
-                cout<<"\nUpdate available stock of the Book :";
-                cin>>ava_stoke;
-                cout<<"\nUpdate book Number fo the Book :";
-                cin>>bookNo;
-             }
-             break;
-             
-    case 2:  char *auName;
-             cin>>auName;
-             if(author==auName){
-                cout<<"\nBOOK FOUND WITH THIS AUTHOR"
-                cout<<"\nUpdate title of the Book :";
-                cin>>title;
-                cout<<"\nUpdate publisher of the Book :";
-                cin>>pulisher;
-                cout<<"\nUpdate Prize of the Book :";
-                cin>>prize;
-                cout<<"\nUpdate available stock of the Book :";
-                cin>>ava_stoke;
-                cout<<"\nUpdate book Number fo the Book :";
-                cin>>bookNo;
-             }
-             break;
-              
-    case 3:  int BookID;
-             cin>>BookID;
-             if(bookNo==BookID){
-                cout<<"\nBOOK FOUND WITH THIS BOOK ID"
-                cout<<"\nUpdate Author of the Book :";
-                cin>>author;
-                cout<<"\nUpdate publisher of the Book :";
-                cin>>pulisher;
-                cout<<"\nUpdate Prize of the Book :";
-                cin>>prize;
-                cout<<"\nUpdate available stock of the Book :";
-                cin>>ava_stoke;
-                cout<<"\nUpdate book Number fo the Book :";
-                cin>>bookNo;
-            }
-             break; 
-      default: cout<<"\nBOOK NOT FOUND";                 
-   }            
-}
-
-void diaplayColl(Book books[20], int val){
-  cout<<"\n---------------------------------------------------------------------------------------------------------------------------";
-  cout<<"\nTitle"<<setw(10)<<"Author"<<setw(10)<<"Publisher"<<setw(10)<<"Avaiable stock"<<setw(10)<<"Prize"<<setw(10)<<"BookNo";
-  cout<<"---------------------------------------------------------------------------------------------------------------------------";
-  for(i=0; i<val; i++)  
-  cout<<books[i].title<<setw(10)<<books[i].author<<setw(10)<<books[i].publisher<<setw(10)<<books[i].ava_stock<<setw(10)<<books[i].prize<<setw(10)<<books [i].bookNo<<"\n";
-  cout<<"\n---------------------------------------------------------------------------------------------------------------------------";
-}
-
-void displayMenu(){  
-  cout<<"<<---------In Collection------------>>\n";
-  cout<<" 1.  Add book \n";
-  cout<<" 2.  Update Book \n";
-  cout<<" 3.  search Book \n";
-  cout<<" 4.  purchase Book \n";
-  cout<<" 5.  Display Collection \n";
-  cout<<" 6.  Display Menu \n";
-  cout<<" 7.  Exit \n";
-}
 
 int main(){
-  
    int i, num;
    Book books[20];
    int exit = 0;
@@ -197,24 +153,19 @@ int main(){
      cout<<"ENTER CHOICE:\n";
      cin>>num;
      switch(num){
-       case 1: add(); noBook++; 
-               diaplayColl(Book books[20], noBook);  
+       case 1: add(); noBook++;  
                break;
                
        case 2: update();
-               diaplayColl(Book books[20]);
                break;
                
        case 3: search();
-               diaplayColl(Book books[20], noBook);
                break;
                
        case 4: purchase();
-               diaplayColl(Book books[20], noBook);
                break;  
                
        case 5: displayMenu();
-               diaplayColl(Book books[20], noBook);
                break;
                
        case 6: exit = 1; 
@@ -225,4 +176,15 @@ int main(){
      }
    }while(exit==0);
    return 0;
+}
+
+void displayMenu(){                                            //DONE
+  cout<<"<<---------In Collection------------>>\n";
+  cout<<" 1.  Add book \n";
+  cout<<" 2.  Update Book \n";
+  cout<<" 3.  search Book \n";
+  cout<<" 4.  purchase Book \n";
+  cout<<" 5.  Display Collection \n";
+  cout<<" 6.  Display Menu \n";
+  cout<<" 7.  Exit \n";
 }

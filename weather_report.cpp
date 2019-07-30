@@ -1,6 +1,6 @@
 /*
 ==================================================================================
-Assignment : Weather Report
+Assignment : CONSTRUCTOR, DESTRUCTOR
 Name : Gaurav Ghati
 class : SE 10
 Batch : F 10
