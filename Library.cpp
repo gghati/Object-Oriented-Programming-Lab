@@ -17,6 +17,8 @@ v)   Record number of successful/unsuccessful transactions
 
 #include<iostream>
 #include<iomanip>
+#include <string.h>
+
 using namespace std;
 
 #define MAX 50
@@ -25,9 +27,10 @@ class Book{
   char *title;
   char *author;
   char *publish;
-  static int ava_stoke;
-  int prize;
-  int bookNo;
+  int *ava_stoke;
+  float *prize;
+  int *bookNo;
+  static int st, ut;
 
   public :
 
@@ -36,7 +39,10 @@ class Book{
   void purchaseBook();
   void updateBook();
   void displayBook();
+  void trans();
   // ~Book();
+
+  friend class Library;
 
 };
 
@@ -59,23 +65,32 @@ void displayMenu(){                                            //DONE
   cout<<" 4.  purchase Book \n";
   cout<<" 5.  Display Collection \n";
   cout<<" 6.  Display Menu \n";
-  cout<<" 7.  Exit \n";
+  cout<<" 7.  Transaction details \n";
+  cout<<" 8.  Exit \n";
 }
 
-Book :: Book(){
+Book :: Book(){                  //DONE
     title = new char[20];
     author = new char[20];
     publish = new char[20];
-    prize;
-    bookNo;
+    prize = new float;
+    ava_stoke = new int;
+    bookNo = new int;
 }
 
-int Book :: ava_stoke = 0;
+void Book :: trans(){             //DONE
+  cout<<"\nSuccessfull transcations : "<<st;
+  cout<<"\nUnsuccessfull transcations : "<<ut;
+}
+
+int Book :: st;
+int Book :: ut;
 int i = 0;
 
 void Book :: purchaseBook(){               //DONE
   ava_stoke--;
-  cout<<"Book Purchased";
+  cout<<"\nBook Purchased!";
+  st++;
 }
 
 void Book::addBook(){                              //DONE
@@ -86,40 +101,40 @@ void Book::addBook(){                              //DONE
   cout<<"\nEnter publisher of the Book:";
   cin>>publish;
   cout<<"\nEnter Prize of the Book:";
-  cin>>prize;
+  cin>>*prize;
   cout<<"\nEnter available stock of the Book:";
-  cin>>ava_stoke;
+  cin>>*ava_stoke;
   cout<<"\nEnter book Number fo the Book:";
-  cin>>bookNo;
+  cin>>*bookNo;
 }
 
 void Book :: displayBook(){
-  cout<<"\n"<<title<<setw(10)<<(author)<<setw(10)<<(publish)<<setw(10)<<ava_stoke<<setw(10)<<prize<<setw(10)<<bookNo<<"\n";  //DONE
+  cout<<"\n"<<title<<setw(10)<<(author)<<setw(10)<<(publish)<<setw(10)<<(*ava_stoke)<<setw(10)<<(*prize)<<setw(10)<<(*bookNo)<<"\n";  //DONE
 }
 
-void Book :: updateBook(){
+void Book :: updateBook(){                     //DONE
    cout<<"\nWhich field you want to Update:\n1) Title\n2) Author\n3) Publisher\n4) Prize\n";
    int ch = 0;
+   cout<<"\nEnter the Choice..";
    cin>>ch;
    switch(ch){
      case 1: cout<<"\nEnter Title:";
-             cin>>title;
+             cin>>title; 
+             break;
      case 2: cout<<"\nEnter Author:";
              cin>>author;
+             break;
      case 3: cout<<"\nEnter Publisher:";
              cin>>publish;
+             break;
      case 4: cout<<"\nEnter Prize:";
-             cin>>prize;
+             cin>>*prize;
+             break;
    }
 }
 
-// Book :: ~Book(){        //DONE
-//     delete title;
-//     delete author;
-//     delete publish;
-// }
 
-void Library :: displayArr(int n){        //DONE
+void Library :: displayArr(int n){              //DONE
   cout<<"\n--------------------------------------------------------------------------";
   cout<<"\nTitle"<<setw(10)<<"Author"<<setw(10)<<"Publisher"<<setw(10)<<"Avaiable stock"<<setw(10)<<"Prize"<<setw(10)<<"BookNo";
   cout<<"\n-------------------------------------------------------------------------";
@@ -129,45 +144,54 @@ void Library :: displayArr(int n){        //DONE
   cout<<"\n----------------------------------------------------------------------------";
 }
 
-int Library :: search(int n){   //DONE
+int Library :: search(int n){                  //DONE
   int subChoice, found;
   cout<<"\n1. Search by book name";
   cout<<"\n2. Search by author of book";
   cout<<"\n3. Search by Book Number";
+  cout<<"\nEnter Choice:";
   cin>>subChoice;
   for(i=0;i<n;i++){
      switch(subChoice){
-        case 1:  char *name;
+        case 1:  char name[MAX];
               cout<<"\nEnter Book Title: ";
               cin>>name;
-              if(books[i].title==name){
+              if(strcmp(name,books[i].title)==0){
                 cout<<"\nBook Found!";
+                cout<<"\n----------------------------------------------------------------------------------------------";
                 books[i].displayBook();
+                cout<<"\n----------------------------------------------------------------------------------------------";
                 return i;
-              }
+              }else{cout<<"Book Not Found!"; return -1;}
               break;
 
-        case 2:char *auName;
+        case 2:char auName[MAX];
+               cout<<"\nEnter Book Author: ";
                cin>>auName;
-               if(books[i].author==auName){
+               if(strcmp(auName,books[i].author)==0){
                   cout<<"\nBook Found!";
+                  cout<<"\n----------------------------------------------------------------------------------------------";
                   books[i].displayBook();
+                  cout<<"\n----------------------------------------------------------------------------------------------";
                   return i;
-               }
+               }else{cout<<"Book Not Found!"; return -1;}
                break;
 
        case 3:  int BookID;
                cin>>BookID;
-               if(books[i].bookNo==BookID){
+               if(*(books[i].bookNo)==BookID){
                   cout<<"\nBook Found!";
+                  cout<<"\n----------------------------------------------------------------------------------------------";
                   books[i].displayBook();
+                  cout<<"\n----------------------------------------------------------------------------------------------";
                   return i;
-               }
+               }else{cout<<"Book Not Found!"; return -1; }
                break;
      }
   }
   if(found==0){
     cout<<"\nBook Not Found!";
+    return -1;
   }
 }
 
@@ -177,13 +201,13 @@ Book Library :: get(int i){            //DONE
 
 int main(){
    int ch;
-   int var = 0;
+   int var = 0;           //
    static int num = 0;      //here num is total number of book present
    Library lib;
    int exit = 0;
    displayMenu();
    do{
-     cout<<"\nENTER CHOICE:";
+     cout<<"\nENTER CHOICE(6 for display menu):";
      cin>>ch;
      switch(ch){
        case 1: lib.get(num).addBook();
@@ -198,6 +222,9 @@ int main(){
                break;
 
        case 4: var = lib.search(num);
+               if(var==-1){
+                  lib.get()
+               }
                lib.get(var).purchaseBook();
                break;
 
@@ -207,7 +234,10 @@ int main(){
        case 6: displayMenu();
                break;
 
-       case 7: exit = 1;
+       case 7: lib.get(var).trans();
+               break;
+
+       case 8: exit = 1;
                break;
 
        default: cout<<"Enter valid choice";
