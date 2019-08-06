@@ -1,13 +1,12 @@
-/*
-==================================================================================
-Assignment : CONSTRUCTOR, DESTRUCTOR
+/* 
+==================================================
+Assignment : Weather Report
 Name : Gaurav Ghati
 class : SE 10
 Batch : F 10
 Problem Statement : Create a class named WeatherReport that holds a dialy weather report with data members day_of_month, highTemp, lowTemp, amountRain, amountSnowfall. Use different types of constructors to initialize the object. Also include a function that prompts the user and sets values for each field so that you can overide the default values. Write a menu driven program in c++ with option to enter data and generate monthly report that displays average of each attribute (The constructor initialize the fields with default values : 99 for day_of_month, 999 for highTemp, -999 for lowTemp, and 0 for amountRain and amountSnowfall)
-==================================================================================
-*/
-
+==================================================
+*/  
 #include<iostream>
 #include <iomanip>
 using namespace std;
@@ -24,7 +23,7 @@ class WeatherReport {
    public:
 
 		 static double sum[4];
-		 int n = 0;
+		 static int n;
 
 		 WeatherReport(){
 			 dayOfMonth = 99;
@@ -42,7 +41,7 @@ class WeatherReport {
 
 		 WeatherReport(int dom, int ht, int lt, int ar, int as){
 			  dayOfMonth = dom;
-				highTemp = ht;
+                		highTemp = ht;
 				lowTemp = lt;
 				amountRain = ar;
 				amountSnowfall = as;
@@ -53,6 +52,8 @@ class WeatherReport {
 		 static void avg();
 };
 
+int WeatherReport :: n;
+
 double WeatherReport :: sum[4];
 
 void WeatherReport :: displayRow(int i){
@@ -60,6 +61,7 @@ void WeatherReport :: displayRow(int i){
 }
 
 void WeatherReport :: update(){
+        n++;
 	cout<<"Enter Day of Month : ";
 	cin>>dayOfMonth;
 	cout<<"High Temperature : ";
@@ -80,10 +82,10 @@ void WeatherReport :: report(){
 }
 
 void WeatherReport :: avg(){
-	for(i=0;i<5;i++){
-		sum[i] = sum[i]/30;
-	}
-	cout<<setw(7)<<"Average"<<setw(36)<<sum[0]<<setw(20)<<sum[1]<<setw(20)<<sum[2]<<setw(20)<<sum[3]<<"\n";
+	/* for(i=0;i<5;i++){
+  		sum[i] = sum[i]/n;
+	} */
+	cout<<setw(7)<<"Average"<<setw(36)<<sum[0]/n<<setw(20)<<sum[1]/n<<setw(20)<<sum[2]/n<<setw(20)<<sum[3]/n<<"\n";
 	cout<<"----------------------------------------------------------------------------------------------------------------\n";
 }
 
@@ -98,12 +100,10 @@ void displayReport(WeatherReport mon[30]){
 	 cout<<setw(7)<<"S.No. "<<setw(20)<<" dayOfMonth "<<setw(20)<<" highTemp "<<setw(20)<<" lowTemp "<<setw(20)<<" amountRain "<<setw(20)<<" amountSnowfall\n";
 	 cout<<"---------------------------------------------------------------------------------------------------------------\n";
 	 for(int i=0; i<30; i++){
-		  mon[i].displayRow(i);
-			mon[i].report();
+	          mon[i].displayRow(i);
 	 }
 	 cout<<"----------------------------------------------------------------------------------------------------------------\n";
-	 mon[29].avg();
- }
+}
 
 int main(){
 
@@ -118,12 +118,14 @@ int main(){
 		 cin>>choice;
 		 switch(choice){
 		   case 1 : cout<<"Enter updating day : \n";
-			          cin>>day;
-								month[day-1].update();
-								displayReport(month);
-								break;
+			    cin>>day;
+			    month[day-1].update();
+                            month[day-1].report();
+		            displayReport(month);
+                            month[29].avg();
+			    break;
 
-			 case 2: entry = 0;
+               	   case 2: entry = 0;
 		 }
 	 }
 	 return 0;
