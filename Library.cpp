@@ -1,5 +1,5 @@
 /*
-==================================================================================
+=========================================================================================
 Assignment : DYNAMIC MEMORY ALLOCATION USING NEW AND DELETE OPERATOR
 Name : Gaurav Ghati
 class : SE 10
@@ -12,7 +12,7 @@ iv)  Purchase a book
      (update the stock and display the total cost)
 v)   Record number of successful/unsuccessful transactions
      (use static data members to keep count of transactions)
-==================================================================================
+==========================================================================================
 */
 
 #include<iostream>
@@ -151,44 +151,51 @@ int Library :: search(int n){                  //DONE
   cout<<"\n3. Search by Book Number";
   cout<<"\nEnter Choice:";
   cin>>subChoice;
-  for(i=0;i<n;i++){
      switch(subChoice){
         case 1:  char name[MAX];
               cout<<"\nEnter Book Title: ";
               cin>>name;
+            for(int i=0;i<n;i++){
               if(strcmp(name,books[i].title)==0){
-                cout<<"\nBook Found!";
-                cout<<"\n----------------------------------------------------------------------------------------------";
-                books[i].displayBook();
-                cout<<"\n----------------------------------------------------------------------------------------------";
-                return i;
-              }else{cout<<"Book Not Found!"; return -1;}
-              break;
-
+              cout<<"\nBook Found!";
+              cout<<"\n-------------------------------------------------------------------------";
+              books[i].displayBook();
+              cout<<"\n-------------------------------------------------------------------------";
+              return i;
+              }
+            }
+            cout<<"Book Not Found!!"; 
+            return -1;
+            
         case 2:char auName[MAX];
                cout<<"\nEnter Book Author: ";
                cin>>auName;
+             for(int i=0;i<n;i++){
                if(strcmp(auName,books[i].author)==0){
-                  cout<<"\nBook Found!";
-                  cout<<"\n----------------------------------------------------------------------------------------------";
-                  books[i].displayBook();
-                  cout<<"\n----------------------------------------------------------------------------------------------";
-                  return i;
-               }else{cout<<"Book Not Found!"; return -1;}
-               break;
-
+               cout<<"\nBook Found!";
+               cout<<"\n-------------------------------------------------------------------------";
+               books[i].displayBook();
+               cout<<"\n-------------------------------------------------------------------------";
+               return i;
+             }
+            }
+            cout<<"Book Not Found!!"; 
+            return -1;
+            
        case 3:  int BookID;
                cin>>BookID;
+              for(int i=0;i<n;i++){
                if(*(books[i].bookNo)==BookID){
-                  cout<<"\nBook Found!";
-                  cout<<"\n----------------------------------------------------------------------------------------------";
-                  books[i].displayBook();
-                  cout<<"\n----------------------------------------------------------------------------------------------";
-                  return i;
-               }else{cout<<"Book Not Found!"; return -1; }
-               break;
+                 cout<<"\nBook Found!";
+                 cout<<"\n-------------------------------------------------------------------------";
+                 books[i].displayBook();
+                 cout<<"\n-------------------------------------------------------------------------";
+                 return i;
+               }
+             }
+            cout<<"Book Not Found!!"; 
+            return -1;
      }
-  }
   if(found==0){
     cout<<"\nBook Not Found!";
     return -1;
@@ -223,9 +230,10 @@ int main(){
 
        case 4: var = lib.search(num);
                if(var==-1){
-                  lib.get()
+                  cout<<"\nCan't Purchase Book! Unscuccessfull transaction..";
+               }else{
+                 lib.get(var).purchaseBook();
                }
-               lib.get(var).purchaseBook();
                break;
 
        case 5: lib.displayArr(num);
