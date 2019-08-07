@@ -88,8 +88,9 @@ int Book :: ut;
 int i = 0;
 
 void Book :: purchaseBook(){               //DONE
-  ava_stoke--;
+  (*ava_stoke)--;
   cout<<"\nBook Purchased!";
+  cout<<*ava_stoke;
   st++;
 }
 
