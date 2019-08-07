@@ -40,6 +40,7 @@ class Book{
   void updateBook();
   void displayBook();
   void trans();
+  void utp();
   // ~Book();
 
   friend class Library;
@@ -76,6 +77,10 @@ Book :: Book(){                  //DONE
     prize = new float;
     ava_stoke = new int;
     bookNo = new int;
+}
+
+void Book :: utp(){
+  ut++;
 }
 
 void Book :: trans(){             //DONE
@@ -232,6 +237,7 @@ int main(){
        case 4: var = lib.search(num);
                if(var==-1){
                   cout<<"\nCan't Purchase Book! Unscuccessfull transaction..";
+                  lib.get(var).utp();
                }else{
                  lib.get(var).purchaseBook();
                }
