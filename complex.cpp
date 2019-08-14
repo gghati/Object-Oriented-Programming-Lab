@@ -65,8 +65,8 @@ Complex Complex :: operator*(Complex a){
 
 Complex Complex :: operator/(Complex a){
   Complex c(0,0);
-  c.real = ((real * a.real) - (img * a.img)) / ((a.real * a.real) - (a.img * a.img));
-  c.img =  ((a.real * img)-(real * a.img))/ ((a.real * a.real) - (a.img * a.img)); 
+  c.real = ((real * a.real) + (img * a.img)) / ((a.real * a.real) + (a.img * a.img));
+  c.img =  ((a.real * img)-(real * a.img))/ ((a.real * a.real) + (a.img * a.img)); 
   return c;
 }
 
@@ -103,7 +103,3 @@ int main(){
   
   return 0;
 }
-
-
-
-
