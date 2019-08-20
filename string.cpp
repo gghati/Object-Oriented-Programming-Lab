@@ -62,29 +62,66 @@ ostream& operator<<(ostream &myout, String &b){
   return myout;
 }
 
+void printMenu(){
+   cout<<"\n\n<--------Operations Menu---------->";
+   cout<<"\n1) String Equality";
+   cout<<"\n2) Copying String 1 into String 2";
+   cout<<"\n3) String concatenation s1, s2 in s1";
+   cout<<"\n4) Exit";
+}
+
+void printBoth(String s1, String s2){
+  cout<<"\nString 1: "<<s1;
+  cout<<"\nString 2: "<<s2;
+}
+
 int main(){
   char *ptr1 = new char[50];
-  ptr1 = "Hey\n";
-  
+  cout<<"\nEnter the String One:";
+  cin>>ptr1;
+
   char *ptr2 = new char[50];
-  ptr2 = "Hey\n";
+  cout<<"\nEnter the String Two:";
+  cin>>ptr2;
+
+  int exit = 0;
+  int ch;
+
   String s1(ptr1);
   String s2(ptr2);
   String s3;
   
-  cout<<s1;
-  cout<<s2;
-  
-  cout<<"String Equality:\n";
-  cout<<(((s1 = s2) == 0 )? "They Are equal\n":"They are not equal\n");
-  
-  cout<<"Copy String 1 into String 2\n";
-  s2<=s1;
-  cout<<s2;
-  
-  cout<<"String concatenation s1, s2 in s3\n";
-  s2*s1;
-  cout<<s2; 
+
+
+  do{
+    printMenu();
+    cout<<"\nEnter Choices:";
+    cin>>ch;
+    
+    switch(ch){
+      case 1: cout<<"\nString Equality:";
+              cout<<(((s1 = s2) == 0 )? "They Are equal":"They are not equal");
+              break;
+
+      case 2: cout<<"\nCopying String 1 into String 2!";
+              s2<=s1;
+              printBoth(s1, s2);
+              break;
+    
+      case 3: cout<<"\nconcatenating string s1, s2 in s1";
+              s1*s2;
+              printBoth(s1, s2);
+              break;
+ 
+      case 4: exit = 1; 
+              break;
+              
+    }
+  }while(exit==0);
   
   return 0;
 } 
+
+
+
+
