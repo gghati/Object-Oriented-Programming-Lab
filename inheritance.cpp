@@ -33,17 +33,44 @@ class BioData{
    char dob[10];            # date of Birth
 
    public:
-   BioData(char, char, char);
+   BioData(char*, char*, char*);
    char* getName();
    char* getBlood();
    char* getDOB();
    void setName(char*);
    void setBlood(char*);
-   void dob(char*);
+   void setDOB(char*);
 };
 
+BioData :: BioData(char* name, char* blood, char* dob){
+   this->name = name;
+   this->blood = blood;
+   this->dob = dob;
+}
+
+char* BioData :: getName(){
+   return name;
+}
+
+char* BioData :: getBlood(){
+   return blood;
+}
+
+char* BioData :: getDOB(){
+   return dob;
+}
+
 void BioData :: setName(char* name){
-  char
+  this -> name = name;
+}
+
+
+void BioData :: setBlood(char* blood){
+  this -> blood = blood;
+}
+
+void BioData :: setDOB(char* dob){
+  this -> dob = dob;
 }
 
 class Physical{
@@ -58,35 +85,116 @@ class Physical{
    void setWeight(int);
 };
 
+Physical :: Physical(int height, int weight){
+   this -> height = height;
+   this -> weight = weight;
+}
+
+int Physical :: getHeight(){
+   return height;
+}
+
+int Physical :: getWeight(){
+   return weight;
+}
+
+void Physical :: setHeight(int height){
+   this->height = height;
+}
+
+void Physical :: setWeight(int weight){
+   this->weight = weight
+}
+
 class BankDetails(){
    int insNumber;
    char address[100];
 
    public:
-   BankDetails(int, char);
+   BankDetails(int, char*);
    int getInsNumber();
    char* getAddress();
    void setInsNumber(int);
    void setAddress(char*);
 };
 
-class Human: private BioData, private Physical, private ankDetails{
+BankDetails :: BankDetails(int insNumber, char* address){
+   this -> insNumber = insNumber;
+   this -> address = address;
+}
+
+void BankDetails :: setInsNumber(int insNumber){
+   this->insNumber = insNumber;
+}
+
+void BankDetails :: setAddress(char* address){
+   this->address = address;
+}
+
+int getInsNumber(){
+   return insNumber;
+}
+
+char* getAddress(){
+   return address;
+}
+
+class Human: private BioData, private Physical, private BankDetails{
    private:
-   int telNumber;
+   int telnumber;
    int DLnumber;
 
-   int getTelNumber();
+   int getTelnumber();
    int getDLnumber();
-   void setTelNumber();
-   void setDLnumber();
+   void setTelnumber(int);
+   void setDLnumber(int);
 
    public:
-   Human() : ;
+   Human(int, int, char*, char*, char*, int, int, int, char*) : 
+          BioData(char*, char*, char*), Physical(int, int), BankDetails(int, char*);
    void displayRec();
    void insertRec();
    void modifyRec();
    void delRecord();
 };
+
+Human :: Human(int telnumber, int DLnumber, char* name, char* blood, char* dob, int height, int weight, int insNumber, char* address) : 
+BioData(char* name, char* blood, char* dob), Physical(int height, int weight), BankDetails(int insNumber, char* address){
+   this->telnumber = telnumber;
+   this->DLnumber = DLnumber;
+}
+
+int Human: getTelNumber(){
+   return telnumber;
+}
+
+int Human: getDLnumber(){
+   return DLnumber;
+}
+
+void setTelNumber(int telnumber){
+   this -> telnumber = telnumber;
+}
+
+void setDLnumber(int DLnumber){
+   this -> DLnumber = DLnumber;
+}
+
+void Human: displayRec(){
+   
+}
+
+void Human: insertRec(){
+
+}
+
+void Human: modifyRec(){
+
+}
+
+void Human: delRecord(){
+
+}
 
 int main(){
 
