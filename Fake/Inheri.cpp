@@ -118,7 +118,7 @@ void Derived::display(int i)
 	cout<<setw(12)<<add;
 	cout<<setw(17)<<polno;
 	cout<<setw(18)<<teleno;
-	cout<<setw(15)<<dlno<<"|";
+	cout<<setw(15)<<dlno<<endl;
 }
 
 void tabHead()
