@@ -23,104 +23,124 @@ ii. Multiplication and division using member functions.
 using namespace std;
 
 template<class T> class Matrix{
-	private:
-		T **mat;
-		int row;
-		int col;
-	public:
-		Matrix();
-		Matrix(int row, int col);
-		void insert(int row, int col);
-		void display();
-		friend Matrix operator+(Matrix a, Matrix b);
-		friend Matrix operator*(Matrix a, Matrix b);
+private:
+    T mat[50][50];
+    int row;
+    int col;
+public:
+    Matrix();
+    Matrix(int, int);
+    void insert(int, int);
+    void display();
+
+    template<class U>
+    friend Matrix<U> operator+(Matrix<U>, Matrix<U>);
+
+    template<class U>
+    friend Matrix<U> operator*(Matrix<U>, Matrix<U>);
 };
 
-template <class T>
-void Matrix :: insert(int row, int col){
-	this->row = row;
-	this->col = col;
-	for(int i=0; i<row; i++){
-		for(j=0; j<col; j++){
-			cout<<"Enter Element["<< i <<"]"<<"["<< j <<"] : ";
-			cin>>mat[i][j];
-		}
-	}
+template<class T>
+Matrix<T> :: Matrix(){
+    row = 0;
+    col = 0;
 }
 
-template <class T>
-void Matrix :: display(){
-	for(int i=0; i<row; i++){
-		for(j=0; j<col; j++){
-			cout<<mat[i][j]<<" ";
-		}
-		cout<<"\n";
-	}	
-}
- 
- 
-friend Matrix operator+(Matrix a, Matrix b){
-	Matrix c;
-	if(a.row == b.row && a.col == b.col){
-		for(int i=0; i<row; i++){
-			for(j=0; j<col; j++){
-				c[i][j] = a[i][j] + b[i][j];
-			}
-		}
-	} else { 
-		cout<<"Can't Add\n";
-	}
-		
-	return c;
+template<class T>
+Matrix<T> :: Matrix(int row, int col){
+    this->row = row;
+    this->col = col;
+    for(int i=0; i<row; i++){
+        for(int j=0; j<col; j++){
+            mat[i][j] = 0;
+        }
+    }
 }
 
+template<class T>
+void Matrix<T> :: insert(int row, int col){
+    this->row = row;
+    this->col = col;
+    for(int i=0; i<row; i++){
+        for(int j=0; j<col; j++){
+            cout<<"Enter Element["<< i <<"]"<<"["<< j <<"] : ";
+            cin>>mat[i][j];
+        }
+    }
+}
 
-friend Matrix operator*(Matrix a, Matrix b){
-	Matrix c;
-	if(a.col==b.row){
-		for(int i=0; i<a.row; i++){
-			for(j=0; j<a.col; j++){
-				for(int k=0; k<a.col; k++){
-					c[i][j] += a[i][k] * b[k][j];
-				}
-			}
-		}	
-	} else {
-		cout<<"Can't be multiplied with each other\n";
-	}
-	return c;
+template<class T>
+void Matrix<T> :: display(){
+    for(int i=0; i<row; i++){
+        for(int j=0; j<col; j++){
+            cout<<mat[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
+}
+
+template <class U>
+Matrix<U> operator+(Matrix<U> a, Matrix<U> b){
+    Matrix<U> c(a.row, a.col);
+    if(a.row == b.row && a.col == b.col){
+        for(int i=0; i<a.row; i++){
+            for(int j=0; j<a.col; j++){
+                c.mat[i][j] = a.mat[i][j] + b.mat[i][j];
+            }
+        }
+    } else {
+        cout<<"Can't Add\n";
+    }
+    return c;
+}
+
+template <class U>
+Matrix<U> operator*(Matrix<U> a, Matrix<U> b){
+    Matrix<U> c(a.row, b.col);
+    if(a.col==b.row){
+        for(int i=0; i<a.row; i++){
+            for(int j=0; j<a.col; j++){
+                for(int k=0; k<a.col; k++){
+                    c.mat[i][j] += a.mat[i][k] * b.mat[k][j];
+                }
+            }
+        }
+    } else {
+        cout<<"Can't be multiplied with each other\n";
+    }
+    return c;
 }
 
 int main(){
-	int r1, r2, c1, c2;
-	cout<<"\nEnter no. of rows in first Matrix: ";
-	cin>>r1;
-	cout<<"\nEnter no. of col in first Matrix: ";
-	cin>>c1;
-	cout<<"\nEnter no. of rows in Sec Matrix: ";
-	cin>>r2;
-	cout<<"\nEnter no. of col in Sec Matrix: ";
-	cin>>c2;
-	
-	Matrix a(r1, c1);
-	a.insert(r1, c1);
-	cout<<"\nMATRIX A :";
-	a.display();
+    int r1, r2, c1, c2;
+    cout<<"\nEnter no. of rows in first Matrix: ";
+    cin>>r1;
+    cout<<"\nEnter no. of col in first Matrix: ";
+    cin>>c1;
 
-	Matrix b();
-	b.insert(r2, c2);
-	cout<<"\nMATRIX B :";
-	b.display();	
-	
-	cout<<"\nAddition is: "
-	Matrix c = a + b;
-	c.display();
-	
-	cout<<"\n";
-	c = a * b;
-	c.display();
-	
-	return 0;					
+    Matrix<int> a;
+    a.insert(r1, c1);
+    cout<<"\nMATRIX A :";
+    a.display();
+
+    cout<<"\nEnter no. of rows in Sec Matrix: ";
+    cin>>r2;
+    cout<<"\nEnter no. of col in Sec Matrix: ";
+    cin>>c2;
+
+    Matrix<int> b;
+    b.insert(r2, c2);
+    cout<<"\nMATRIX B :";
+    b.display();
+
+    cout<<"\nAddition is: \n";
+    Matrix<int> c;
+    c = a + b;
+    c.display();
+
+    cout<<"Multiplication is: \n";
+    c = a * b;
+    c.display();
+
+    return 0;
 }
-
-
