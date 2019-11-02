@@ -6,13 +6,12 @@ class : SE 10
 Batch : F 10
 
 Problem Statement :
-Write a program in C++ to implement sequential file for students' database and
-perform following operations on it
-1) Create
-2) Display
-3) Add
-4) Delete
-5) Modify
+	Write a program in C++ to implement sequential file for students' database and perform following operations on it
+	1) Create
+	2) Display
+	3) Add
+	4) Delete
+	5) Modify
 ==========================================================================================
 */
 
@@ -20,7 +19,7 @@ perform following operations on it
 #include<fstream>
 using namespace std;
 class student
-{
+{33
 	char name[30];
 	int roll;
 	int age;

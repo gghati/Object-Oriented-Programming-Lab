@@ -135,8 +135,7 @@ void tabHead()
 	cout<<setw(15)<<"DL No."<<endl;
 }
 
-void Derived::searchData(Derived D[max],char sch[50],int n)
-{
+void Derived::searchData(Derived D[max],char sch[50],int n){
 	int f=1;
 	ll
 	cout<<endl;
