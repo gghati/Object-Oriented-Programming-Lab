@@ -144,3 +144,36 @@ int main(){
 
     return 0;
 }
+
+/*
+
+Enter number of rows:3
+Enter Number of columns:3
+Enter Row [0] Column [0] :1
+Enter Row [0] Column [1] :2
+Enter Row [0] Column [2] :3
+Enter Row [1] Column [0] :4
+Enter Row [1] Column [1] :5
+Enter Row [1] Column [2] :6
+Enter Row [2] Column [0] :7
+Enter Row [2] Column [1] :8
+Enter Row [2] Column [2] :9
+
+Enter number of rows:3
+Enter Number of columns:3
+Enter Row [0] Column [0] :9
+Enter Row [0] Column [1] :8
+Enter Row [0] Column [2] :7
+Enter Row [1] Column [0] :6
+Enter Row [1] Column [1] :5
+Enter Row [1] Column [2] :4
+Enter Row [2] Column [0] :3
+Enter Row [2] Column [1] :2
+Enter Row [2] Column [2] :1
+
+10 10 10 
+10 10 10 
+10 10 10
+
+*/
+

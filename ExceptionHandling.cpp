@@ -82,3 +82,65 @@ int main()
 	}while(ch!=4);
 	return 0;
 }
+
+/*
+
+Menu :
+1. Enter Values.
+2. Show Values.
+3. Compute Division
+4. Exit
+Enter your choice : 1
+
+GET DATA :
+Enter Dividend : 0
+Enter Divisor  : 0
+
+Menu :
+1. Enter Values.
+2. Show Values.
+3. Compute Division
+4. Exit
+Enter your choice : 2
+
+SHOW DATA :
+Dividend = 0
+Divisor  = 0
+
+Menu :
+1. Enter Values.
+2. Show Values.
+3. Compute Division
+4. Exit
+Enter your choice : 3
+
+Cannot Divide Number by ZERO..!!
+
+Menu :
+1. Enter Values.
+2. Show Values.
+3. Compute Division
+4. Exit
+Enter your choice : 1
+
+GET DATA :
+Enter Dividend : 4
+Enter Divisor  : 8
+
+Menu :
+1. Enter Values.
+2. Show Values.
+3. Compute Division
+4. Exit
+Enter your choice : 3
+
+Division = 0.5
+
+Menu :
+1. Enter Values.
+2. Show Values.
+3. Compute Division
+4. Exit
+Enter your choice : 4
+
+*/

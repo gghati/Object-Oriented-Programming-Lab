@@ -6,13 +6,11 @@ class : SE 10
 Batch : F 10
 
 Problem Statement :
-Write a C++ program to perform String operations using Operator
-Overloading
-
-a) "=" String Equality Check
-b) "<=" String Copy
-c) "<<" Display String ( Using Friend Function )
-d) "*" String concatenation (e.g. S1="PICT", S2="SCTR", S3=S1*S2 i.e. s3="PICTSCTR").
+	Write a C++ program to perform String operations using Operator Overloading
+	a) "=" String Equality Check
+	b) "<=" String Copy
+	c) "<<" Display String ( Using Friend Function )
+	d) "*" String concatenation (e.g. S1="PICT", S2="SCTR", S3=S1*S2 i.e. s3="PICTSCTR").
 
 ==========================================================================================
 */
@@ -123,5 +121,50 @@ int main(){
 } 
 
 
+/*
 
+Enter the String One:PICT           
+
+Enter the String Two:STCR
+
+
+<--------Operations Menu---------->
+1) String Equality
+2) Copying String 1 into String 2
+3) String concatenation s1, s2 in s1
+4) Exit
+Enter Choices:1
+
+String Equality:They are not equal
+
+<--------Operations Menu---------->
+1) String Equality
+2) Copying String 1 into String 2
+3) String concatenation s1, s2 in s1
+4) Exit
+Enter Choices:2
+
+Copying String 1 into String 2!
+String 1: PICT
+String 2: PICT
+
+<--------Operations Menu---------->
+1) String Equality
+2) Copying String 1 into String 2
+3) String concatenation s1, s2 in s1
+4) Exit
+Enter Choices:3
+
+concatenating string s1, s2 in s1
+String 1: PICTPICT
+String 2: PICT
+
+<--------Operations Menu---------->
+1) String Equality
+2) Copying String 1 into String 2
+3) String concatenation s1, s2 in s1
+4) Exit
+Enter Choices:4
+
+*/
 

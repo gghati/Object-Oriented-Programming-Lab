@@ -87,3 +87,14 @@ int main(){
    
    return 0;  
 }
+
+/*
+
+Enter base and height of Triangle :3 4     
+
+The Area of the Rectangle : 6
+Enter length and breath of Rectangle :3 4 
+
+The Area of the Rectangle : 12
+
+*/

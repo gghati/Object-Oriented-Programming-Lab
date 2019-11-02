@@ -4,21 +4,21 @@ Assignment : INHERITANCE
 Name : Gaurav Ghati
 class : SE 10
 Batch : F 10
-Problem Statement :
 
-Design a base class with name, date of birth, blood group and another base class
+Problem Statement :
+	Design a base class with name, date of birth, blood group and another base class
 consisting of the data members such as height and weight.
 Design one more base class consisting of the insurance policy number and contact
 address. The derived class contains the data members’ telephone numbers and
 driving license number.
 Write a menu driven program to carry out the following things:
 
-1) Build a master table
-2) Display Record
-3) Insert a record
-4) Delete record
-5) Edit record
-6) Search for a record
+	1) Build a master table
+	2) Display Record
+	3) Insert a record
+	4) Delete record
+	5) Edit record
+	6) Search for a record
 ==========================================================================================
 */
 
@@ -245,5 +245,5 @@ void Human: delRecord(){
 /////////////////////////////////////////////////////////////////////////////////
 
 int main(){
-
+	
 }

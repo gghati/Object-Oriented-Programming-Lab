@@ -6,11 +6,9 @@ class : SE 10
 Batch : F 10
 
 Problem Statement :
-Write a C++ program to design a class 'Complex' with data members for real and imaginary part. Provide default and parameterized constructors. Write a program to perform arithmetic operations of two complex numbers using operator overloading.
-
-i. Addition and subtraction using friend functions.
-ii. Multiplication and division using member functions.
-
+	Write a C++ program to design a class 'Complex' with data members for real and imaginary part. Provide default and parameterized constructors. Write a program to perform arithmetic operations of two complex numbers using operator overloading.
+	i. Addition and subtraction using friend functions.
+	ii. Multiplication and division using member functions.
 ==========================================================================================
 */
 
@@ -103,3 +101,31 @@ int main(){
   
   return 0;
 }
+/*
+
+Enter value of a1 and b1 for first Complex Value:3 4
+Enter value of a1 and b1 for first Complex Value:4 5
+
+Initial Value of C3:
+Real = 0
+Imaginary = 0
+
+After Addition:
+Real = 7
+Imaginary = 9
+
+After Subtraction:
+Real = -1
+Imaginary = -1
+
+After Multiplication:
+Real = -8
+Imaginary = 31
+
+After Division:
+Real = 0.780488
+Imaginary = 0.0243902
+
+*/
+
+
