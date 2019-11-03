@@ -54,14 +54,16 @@ double Shape :: getArea(){
 
 class Triangle : public Shape{
 	public:
-	virtual void compute_area(){
-		cout<<"\nEnter base and height of Triangle :";
-		setData();
-		double area = 0.5 * getSide1() * getSide2();
-		setArea(area);
-		cout<<"\nThe Area of the Rectangle : "<<getArea();
-	}
+	virtual void compute_area();
 };
+
+void Triangle :: compute_area(){
+	cout<<"\nEnter base and height of Triangle :";
+	setData();
+	double area = 0.5 * getSide1() * getSide2();
+	setArea(area);
+	cout<<"\nThe Area of the Rectangle : "<<getArea();
+}
 
 class Rectangle : public Shape{
 	public:

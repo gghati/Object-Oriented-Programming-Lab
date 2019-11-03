@@ -349,3 +349,177 @@ int main()
 	}while(ch!=7);
 	return 0;
 }
+
+/*
+
+Menu :
+1. Build Master Table
+2. Display Records
+3. Insert Record
+4. Search Record
+5. Edit Record
+6. Delete Record
+7. Exit
+Enter your choice : 1
+
+Enter No. of Records : 2
+
+Name : Gaurav
+Blood Group : O+
+Date Of Birth :
+   Date  : 3
+   Month : 4
+   Year  : 1902
+Height : 153
+Weight : 76
+Address : 123klasjdkaj
+Insurance Policy No : 8327
+Telephone No : 123
+Driving License No : 5432
+
+Name : Puneet
+Blood Group : O
+Date Of Birth :
+   Date  : 4
+   Month : 5
+   Year  : 2000
+Height : 543
+Weight : 24
+Address : 342skjds sdj
+Insurance Policy No : 432
+Telephone No : 675
+Driving License No : 432
+
+Menu :
+1. Build Master Table
+2. Display Records
+3. Insert Record
+4. Search Record
+5. Edit Record
+6. Delete Record
+7. Exit
+Enter your choice : 2
+------------------------------------------------------------------------------------------------------------------------
+Sr.No. Name    Blood Group    D.O.B.  Height  Weight  Address     Ins. Policy No.  Telephone No.     DL No.         
+
+------------------------------------------------------------------------------------------------------------------------1      Gaurav     O+     3 -4 -1902 153     76      123klasjdkaj8327             123               5432          
+2      Puneet      O       4 -5 -2000 543     24      342skjds sdj432              675               432            
+------------------------------------------------------------------------------------------------------------------------
+
+Menu :
+1. Build Master Table
+2. Display Records
+3. Insert Record
+4. Search Record
+5. Edit Record
+6. Delete Record
+7. Exit
+Enter your choice : 4
+
+Enter Name to Search : Gaurav
+
+SEARCH RESULT :
+------------------------------------------------------------------------------------------------------------------------
+Sr.No. Name    Blood Group    D.O.B.      Height  Weight  Address     Ins. Policy No.  Telephone No.     DL No.         
+------------------------------------------------------------------------------------------------------------------------1      Gaurav     O+     3 -4 -1902 153     76      123klasjdkaj8327             123               5432           
+------------------------------------------------------------------------------------------------------------------------
+
+Menu :
+1. Build Master Table
+2. Display Records
+3. Insert Record
+4. Search Record
+5. Edit Record
+6. Delete Record
+7. Exit
+Enter your choice : 5
+
+Enter Name to Search : Puneet
+
+SEARCH RESULT :
+------------------------------------------------------------------------------------------------------------------------
+Sr.No. Name      Blood Group    D.O.B.      Height  Weight  Address     Ins. Policy No.  Telephone No.     DL No.         
+------------------------------------------------------------------------------------------------------------------------2      Puneet              O       4 -5 -2000 543     24      342skjds sdj432              675           432          |
+------------------------------------------------------------------------------------------------------------------------
+
+Enter Sr.No. of Data to Modify : 2    
+
+<-------------MODIFY MENU ------------->
+   What do u want to modify..??
+    1) Name
+    2) Blood Group
+    3) Date of Birth
+    4) Height
+    5) Weight
+    6) Address
+    7) Insurance Policy Number
+    8) Telephone Number
+    9) Driving License Number
+   10) Exit
+Enter your choice : 2
+Blood Group : O
+
+<-------------MODIFY MENU ------------->
+   What do u want to modify..??
+    1) Name
+    2) Blood Group
+    3) Date of Birth
+    4) Height
+    5) Weight
+    6) Address
+    7) Insurance Policy Number
+    8) Telephone Number
+    9) Driving License Number
+   10) Exit
+Enter your choice : 10 
+
+Data Modified Successfully..!!
+
+Menu :
+1. Build Master Table
+2. Display Records
+3. Insert Record
+4. Search Record
+5. Edit Record
+6. Delete Record
+7. Exit
+Enter your choice : 2
+------------------------------------------------------------------------------------------------------------------------
+Sr.No. Name                Blood Group    D.O.B.      Height  Weight  Address     Ins. Policy No.  Telephone No.     DL No.         
+------------------------------------------------------------------------------------------------------------------------1      Gaurav     O+     3 -4 -1902 153     76      123klasjdkaj8327             123               5432           |
+2      Puneet       O    4 -5 -2000 543     24      342skjds sdj432              675               432            |
+------------------------------------------------------------------------------------------------------------------------
+
+Menu :
+1. Build Master Table
+2. Display Records
+3. Insert Record
+4. Search Record
+5. Edit Record
+6. Delete Record
+7. Exit
+Enter your choice : 6
+
+Enter Name to Search : Gaurav
+
+SEARCH RESULT :
+------------------------------------------------------------------------------------------------------------------------
+Sr.No. Name   Blood Group    D.O.B.      Height  Weight  Address     Ins. Policy No.  Telephone No.     DL No.
+------------------------------------------------------------------------------------------------------------------------1      Gaurav    O+      3 -4 -1902 153     76      123klasjdkaj8327             123               5432          
+------------------------------------------------------------------------------------------------------------------------
+
+Enter Sr.No. of Data to Delete : 1
+
+Data Deleted Successfully..!!
+
+Menu :
+1. Build Master Table
+2. Display Records
+3. Insert Record
+4. Search Record
+5. Edit Record
+6. Delete Record
+7. Exit
+Enter your choice : 7
+
+*/
