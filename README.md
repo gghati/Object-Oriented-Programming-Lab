@@ -1,5 +1,9 @@
 # Object-Oriented-Programming-Lab
 
+![](https://img.shields.io/badge/Gaurav-Ghati-red)
+![](https://img.shields.io/github/languages/top/gauravghati/Object-Oriented-Programming-Lab)
+![](https://img.shields.io/github/last-commit/gauravghati/Object-Oriented-Programming-Lab)
+
 # 1) CONSTRUCTOR AND DESTRUCTOR
 	TITLE: WEATHER REPORT
 		Create a class named weather report that holds a daily weather report with data
