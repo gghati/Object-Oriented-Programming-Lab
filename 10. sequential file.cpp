@@ -19,7 +19,7 @@ Problem Statement :
 #include<fstream>
 using namespace std;
 class student
-{33
+{
 	char name[30];
 	int roll;
 	int age;
